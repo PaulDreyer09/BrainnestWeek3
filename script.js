@@ -15,7 +15,19 @@ const RESULT_TYPES = {
  * @returns {string} returns the string value of what the player typed in.
  */
 const playerPlay = () => {
-    console.log("play");
+    let player_selection = ''
+    while (true) {
+        const player_input = prompt('You have to pick rock, paper or scissors');
+        if (SELECTIONS.includes(player_selection)) {
+            alert('You chose ${player_selection}');
+            break;
+        } else {
+            alert('Incorrect input, please choose one of the three given objects!');
+        }
+    }
+
+    return player_selection;
+
 }
 
 /**
@@ -54,10 +66,10 @@ const game = (number_of_rounds) => {
  */
 const getNumberOfRounds = () => {
     let number_of_rounds;
-    while(true){
+    while (true) {
         number_of_rounds = prompt('How many rounds would you like to play?')
 
-        if(number_of_rounds <= 0 || isNaN(number_of_rounds)){
+        if (number_of_rounds <= 0 || isNaN(number_of_rounds)) {
             alert('Invalid number provided. \nPlease provide an integer number of at least 1.')
         }
         else {
