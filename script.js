@@ -15,7 +15,7 @@ const RESULT_TYPES = {
  * @returns {string} returns the string value of what the player typed in.
  */
 const playerPlay = () => {
-
+    console.log("play");
 }
 
 /**
