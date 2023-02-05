@@ -34,9 +34,13 @@ const playerPlay = () => {
  * Computer chooses his hand to throw
  * This function generates a random selection for the computer and returns the string value of the selection
  * @returns {string} returns a random selection 
+ * Have put an alert in for hand played but can be removed if not required.
  */
 const computerPlay = () => {
-
+    const randomNum = Math.floor(Math.random() * 3);
+    const computerChoice = SELECTIONS[randomNum];
+    alert(`Computer played: ${computerChoice}`);
+    return computerChoice;
 }
 
 /**
