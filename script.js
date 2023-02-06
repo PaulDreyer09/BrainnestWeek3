@@ -51,7 +51,32 @@ const computerPlay = () => {
  * @returns {string} returns a valid result of the round as 'Win', 'Lose', or 'Draw'
  */
 const playRound = () => {
-
+    let player = playerPlay();
+    let computer = computerPlay();
+    if (player === computer){
+        return RESULT_TYPES.draw;
+    } else if (player === 'rock'){
+        if (computer === "scissors") {
+            return RESULT_TYPES.win;
+        }
+        else {
+            return RESULT_TYPES.lose;
+        }
+    } else if (player === 'paper'){
+        if (computer === "rock") {
+            return RESULT_TYPES.win;
+        }
+        else {
+            return RESULT_TYPES.lose;
+        }
+    } else if (player === 'scissors'){
+        if (computer === "paper") {
+            return RESULT_TYPES.win;
+        }
+        else {
+            return RESULT_TYPES.lose;
+        }
+    }
 }
 
 /**
