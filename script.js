@@ -8,6 +8,10 @@ const RESULT_TYPES = {
     draw: 'Draw'
 }
 
+const formatString = (string_value) => {
+    return string_value
+        + string_value.toLocaleLowerCase();
+}
 /**
  * Request the player to type in their hand to throw and returns the string.
  * The string gets formatted to lowercase and verified to the valid selections
@@ -18,15 +22,15 @@ const playerPlay = () => {
     let player_selection = ''
     while (true) {
         const player_input = prompt('You have to pick rock, paper or scissors');
-
+        player_selection = formatString(player_input);
         //Check if cancel or escape was pressed
-        if(player_input == null){            
+        if (player_input == null) {
             if (confirm("Do you want to end the game?")) {
                 // user clicked "ok"
                 return 'stop'
             } else {
                 // user clicked "cancel"
-                continue ;
+                continue;
             }
         }
 
@@ -68,28 +72,28 @@ const computerPlay = () => {
  */
 const playRound = () => {
     let player_selection = playerPlay();
-    if(player_selection === 'stop'){
+    if (player_selection === 'stop') {
         return 'stop';
     }
 
     let computer_selection = computerPlay();
-    if (player === computer_selection){
+    if (player === computer_selection) {
         return RESULT_TYPES.draw;
-    } else if (player === 'rock'){
+    } else if (player === 'rock') {
         if (computer_selection === "scissors") {
             return RESULT_TYPES.win;
         }
         else {
             return RESULT_TYPES.lose;
         }
-    } else if (player === 'paper'){
+    } else if (player === 'paper') {
         if (computer_selection === "rock") {
             return RESULT_TYPES.win;
         }
         else {
             return RESULT_TYPES.lose;
         }
-    } else if (player === 'scissors'){
+    } else if (player === 'scissors') {
         if (computer_selection === "paper") {
             return RESULT_TYPES.win;
         }
@@ -125,13 +129,13 @@ const getNumberOfRounds = () => {
     while (true) {
         number_of_rounds = prompt('How many rounds would you like to play?')
         //Check if cancel or escape was pressed to stop the game
-        if(number_of_rounds == null){            
+        if (number_of_rounds == null) {
             if (window.confirm("Do you want to end the game?")) {
                 // user clicked "ok"
                 return 0;
             } else {
                 // user clicked "cancel"
-                continue ;
+                continue;
             }
         }
 
@@ -151,15 +155,15 @@ const getNumberOfRounds = () => {
  */
 const handleStartButtonPress = () => {
     let player_input = getNumberOfRounds();
-    if(player_input === 0){
+    if (player_input === 0) {
         console.log('Game stopped by player');
         return;
     }
 
-    if(player_input && !isNaN(player_input)){
+    if (player_input && !isNaN(player_input)) {
         game(player_input);
     }
-    else{
+    else {
         alert('Something went wrong in selecting the number of rounds. Please press the start button again to try again.');
     }
 }
