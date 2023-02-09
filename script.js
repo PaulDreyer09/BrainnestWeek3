@@ -9,8 +9,7 @@ const RESULT_TYPES = {
 }
 
 const formatString = (string_value) => {
-    return string_value
-        + string_value.toLocaleLowerCase();
+    return string_value.toLocaleLowerCase();
 }
 /**
  * Request the player to type in their hand to throw and returns the string.
