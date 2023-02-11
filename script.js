@@ -1,3 +1,9 @@
+document.addEventListener("keydown", (event) => {
+    if(event.key == 'Enter'){
+        game();
+    }
+})
+
 //Valid selections players can choose for playing rock paper scissors
 const SELECTIONS = ['rock', 'paper', 'scissors'];
 
