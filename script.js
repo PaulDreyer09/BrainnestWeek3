@@ -39,6 +39,7 @@ const playerPlay = () => {
             alert('Incorrect input, please choose one of the three given objects!');
         }
     }
+
     return player_selection;
 }
 
@@ -104,6 +105,7 @@ const playRound = () => {
  * @param {number} number_of_rounds number of round the game will be
  */
 const game = (number_of_rounds) => {
+
     const game_results = {
         wins: 0,
         loses: 0,
@@ -151,7 +153,7 @@ const game = (number_of_rounds) => {
 const getNumberOfRounds = () => {
     let number_of_rounds;
     while (true) {
-        number_of_rounds = prompt('How many rounds would you like to play?')
+        number_of_rounds = prompt('Please choose 5 or more rounds?')
         //Check if cancel or escape was pressed to stop the game
         if (number_of_rounds == null) {
             if (window.confirm("Do you want to end the game?")) {
@@ -164,8 +166,8 @@ const getNumberOfRounds = () => {
         }
 
 
-        if (number_of_rounds <= 0 || isNaN(number_of_rounds)) {
-            alert('Invalid number provided. \nPlease provide an integer number of at least 1.')
+        if (number_of_rounds < 5 || isNaN(number_of_rounds)) {
+            alert('Invalid number provided. \nPlease provide an integer number of at least 5.')
             continue;
         }
         else {
