@@ -36,7 +36,7 @@ const playerPlay = () => {
         //Fix: Needs to format player_input to lowercase as the selections and assign it to player_selection
 
         if (SELECTIONS.includes(player_selection)) {
-            alert('You chose ${player_selection}');
+            alert(`You chose ${player_selection}`);
             break;
         } else {
             alert('Incorrect input, please choose one of the three given objects!');
@@ -110,14 +110,40 @@ const playRound = () => {
  */
 const game = (number_of_rounds) => {
 
-    //Add the following code to the top inside the for loop for the rounds to allow game to end when playRound returns 'stop'
-    /**
-    if(result === 'stop'){
-        console.log('Game stopped by player');
-        return;
+    const game_results = {
+        wins: 0,
+        loses: 0,
+        draws: 0
     }
-    */
+
+    for (let i = 0; i < number_of_rounds; i++) {
+        let round_result = playRound();
+
+    }
+        switch (round_result) {
+            case RESULT_TYPES.win:
+                game_results.wins++;
+                break;
+            case RESULT_TYPES.lose:
+                game_results.loses++;
+                break;
+            case RESULT_TYPES.draw:
+                game_results.draws++;
+                break;
+            default:
+                break;
+        }
+
+    alert(`Game results: Wins(${game_results.wins}) | Loses(${game_results.loses}) | Draws(${game_results.draws})`);
+    alert('Thank you for playing!');
+
+
 }
+
+
+
+
+
 
 /**
  * Requests the user to provide the number of rounds for the game to play.
