@@ -1,3 +1,9 @@
+document.addEventListener("keydown", (event) => {
+    if(event.key == 'Enter'){
+        game();
+    }
+})
+
 //Valid selections players can choose for playing rock paper scissors
 const SELECTIONS = ['rock', 'paper', 'scissors'];
 
@@ -143,6 +149,7 @@ const getNumberOfRounds = () => {
  * Results of each round will be displayed on the screen as a message
  * Finally after each round the game will display your total win/lose/draw score
  */
+
 const game = () => {
     let number_of_rounds = getNumberOfRounds();
 
