@@ -20,7 +20,7 @@ const formatString = (string_value) => {
 const playerPlay = () => {
     let player_selection = ''
     while (true) {
-        const player_input = prompt('You have to pick rock, paper or scissors');
+        const player_input = prompt('You have to pick ROCK!, PAPER! or SCISSORS!');
         player_selection = formatString(player_input);
         //Check if cancel or escape was pressed
         if (player_input == null) {
@@ -110,16 +110,18 @@ const playRound = () => {
  */
 const game = (number_of_rounds) => {
 
+
     const game_results = {
         wins: 0,
         loses: 0,
         draws: 0
     }
 
+//  let game_rounds = '';
+
     for (let i = 0; i < number_of_rounds; i++) {
         let round_result = playRound();
 
-    }
         switch (round_result) {
             case RESULT_TYPES.win:
                 game_results.wins++;
@@ -133,12 +135,19 @@ const game = (number_of_rounds) => {
             default:
                 break;
         }
+    }
 
     alert(`Game results: Wins(${game_results.wins}) | Loses(${game_results.loses}) | Draws(${game_results.draws})`);
+    if (game_results.wins > game_results.loses){
+        alert('John Connor you have defeated the robot overlords!')
+    } else if(game_results.wins < game_results.loses){
+        alert('Beaten by a computer, prepare to be terminated!')
+    } else {
+        alert('You Tied, best head to the pub then!')
+    }
     alert('Thank you for playing!');
-
-
 }
+
 
 
 
