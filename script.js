@@ -8,9 +8,6 @@ const RESULT_TYPES = {
     draw: 'Draw'
 }
 
-const formatString = (string_value) => {
-    return string_value.toLocaleLowerCase();
-}
 /**
  * Request the player to type in their hand to throw and returns the string.
  * The string gets formatted to lowercase and verified to the valid selections
@@ -33,7 +30,7 @@ const playerPlay = () => {
             }
         }
 
-        player_selection = formatString(player_input);
+        player_selection = player_input.toLocaleLowerCase();
 
         if (SELECTIONS.includes(player_selection)) {
             alert(`You chose ${player_selection}`);
@@ -44,7 +41,6 @@ const playerPlay = () => {
     }
 
     return player_selection;
-
 }
 
 /**
