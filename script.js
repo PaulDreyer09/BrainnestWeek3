@@ -76,23 +76,23 @@ const playRound = () => {
     }
 
     let computer_selection = computerPlay();
-    if (player === computer_selection) {
+    if (player_selection === computer_selection) {
         return RESULT_TYPES.draw;
-    } else if (player === 'rock') {
+    } else if (player_selection === 'rock') {
         if (computer_selection === "scissors") {
             return RESULT_TYPES.win;
         }
         else {
             return RESULT_TYPES.lose;
         }
-    } else if (player === 'paper') {
+    } else if (player_selection === 'paper') {
         if (computer_selection === "rock") {
             return RESULT_TYPES.win;
         }
         else {
             return RESULT_TYPES.lose;
         }
-    } else if (player === 'scissors') {
+    } else if (player_selection === 'scissors') {
         if (computer_selection === "paper") {
             return RESULT_TYPES.win;
         }
