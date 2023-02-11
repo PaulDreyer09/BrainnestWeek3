@@ -120,6 +120,7 @@ const getNumberOfRounds = () => {
         if (number_of_rounds == null) {
             if (window.confirm("Do you want to end the game?")) {
                 // user clicked "ok"
+                alert('If you want to start the game again please press the Enter key')
                 return 0;
             } else {
                 // user clicked "cancel"
@@ -157,6 +158,7 @@ const game = () => {
         let round_result = playRound();
         switch (round_result) {
             case 'stop':
+                alert('If you want to start the game again please press the Enter key')
                 console.log('Game stopped by player');
                 return;
             case RESULT_TYPES.win:
