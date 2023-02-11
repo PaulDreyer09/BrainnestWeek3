@@ -9,6 +9,16 @@ const RESULT_TYPES = {
 }
 
 /**
+ * Formats the string to proper input for the game
+ * Trims white space and sets text to lowercase
+ * @param {string} inputString 
+ * @returns 
+ */
+const formatString = (inputString) => {
+    return inputString.trim().toLocaleLowerCase();
+}
+
+/**
  * Request the player to type in their hand to throw and returns the string.
  * The string gets formatted to lowercase and verified to the valid selections
  * to test the input the player provided according to the valid selections.
@@ -30,7 +40,7 @@ const playerPlay = () => {
             }
         }
 
-        player_selection = player_input.toLocaleLowerCase();
+        player_selection = formatString(player_input);
 
         if (SELECTIONS.includes(player_selection)) {
             alert(`You chose ${player_selection}`);
@@ -39,6 +49,7 @@ const playerPlay = () => {
             alert('Incorrect input, please choose one of the three given objects!');
         }
     }
+
     return player_selection;
 }
 
@@ -98,12 +109,43 @@ const playRound = () => {
 }
 
 /**
- * Starts the game with a provided number of rounds
+ * Requests the user to provide the number of rounds for the game to play.
+ * @returns {number} rounds number of round the game will be
+ */
+const getNumberOfRounds = () => {
+    let number_of_rounds;
+    while (true) {
+        number_of_rounds = prompt('How many rounds would you like to play?\nPlease choose 5 or more rounds')
+        //Check if cancel or escape was pressed to stop the game
+        if (number_of_rounds == null) {
+            if (window.confirm("Do you want to end the game?")) {
+                // user clicked "ok"
+                return 0;
+            } else {
+                // user clicked "cancel"
+                continue;
+            }
+        }
+
+        if (number_of_rounds < 5 || isNaN(number_of_rounds)) {
+            alert('Invalid number provided. \nPlease provide an integer number of at least 5.')
+            continue;
+        }
+        else {
+            return number_of_rounds;
+        }
+    }
+}
+
+/**
+ * Starts the game
+ * Requests number of rounds before starting the rounds
  * Results of each round will be displayed on the screen as a message
  * Finally after each round the game will display your total win/lose/draw score
- * @param {number} number_of_rounds number of round the game will be
  */
-const game = (number_of_rounds) => {
+const game = () => {
+    let number_of_rounds = getNumberOfRounds();
+
     const game_results = {
         wins: 0,
         loses: 0,
@@ -111,6 +153,7 @@ const game = (number_of_rounds) => {
     }
 
     for (let i = 0; i < number_of_rounds; i++) {
+        alert('Round ' + (i + 1))
         let round_result = playRound();
         switch (round_result) {
             case 'stop':
@@ -144,52 +187,4 @@ const game = (number_of_rounds) => {
     alert('Thank you for playing!');
 }
 
-/**
- * Requests the user to provide the number of rounds for the game to play.
- * @returns {number} rounds number of round the game will be
- */
-const getNumberOfRounds = () => {
-    let number_of_rounds;
-    while (true) {
-        number_of_rounds = prompt('How many rounds would you like to play?')
-        //Check if cancel or escape was pressed to stop the game
-        if (number_of_rounds == null) {
-            if (window.confirm("Do you want to end the game?")) {
-                // user clicked "ok"
-                return 0;
-            } else {
-                // user clicked "cancel"
-                continue;
-            }
-        }
-
-
-        if (number_of_rounds <= 0 || isNaN(number_of_rounds)) {
-            alert('Invalid number provided. \nPlease provide an integer number of at least 1.')
-            continue;
-        }
-        else {
-            return number_of_rounds;
-        }
-    }
-}
-
-/**
- * Handles the press event on the start button to get the number of rounds for the game and to start the game
- */
-const handleStartButtonPress = () => {
-    let player_input = getNumberOfRounds();
-    if (player_input === 0) {
-        console.log('Game stopped by player');
-        return;
-    }
-
-    if (player_input && !isNaN(player_input)) {
-        game(player_input);
-    }
-    else {
-        alert('Something went wrong in selecting the number of rounds. Please press the start button again to try again.');
-    }
-}
-
-document.querySelector('#start_button').addEventListener('click', handleStartButtonPress);
+game();
