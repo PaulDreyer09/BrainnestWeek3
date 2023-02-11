@@ -39,7 +39,6 @@ const playerPlay = () => {
             alert('Incorrect input, please choose one of the three given objects!');
         }
     }
-
     return player_selection;
 }
 
@@ -105,7 +104,6 @@ const playRound = () => {
  * @param {number} number_of_rounds number of round the game will be
  */
 const game = (number_of_rounds) => {
-
     const game_results = {
         wins: 0,
         loses: 0,
@@ -145,12 +143,6 @@ const game = (number_of_rounds) => {
     }
     alert('Thank you for playing!');
 }
-
-
-
-
-
-
 
 /**
  * Requests the user to provide the number of rounds for the game to play.
